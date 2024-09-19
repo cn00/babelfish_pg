@@ -1,0 +1,79 @@
+-- tsql
+exec sp_updatestats;
+go
+
+exec sp_updatestats 'no';
+go
+
+exec sp_updatestats 'resample';
+go
+
+exec sp_updatestats @resample='resample';
+go
+
+exec sp_updatestats resample;
+go
+
+exec sp_updatestats @resample;
+go
+
+exec sp_updatestats @resample='sdlfkjsdf';
+go
+
+exec sp_updatestats 'resdflskjf';
+go
+
+exec sp_updatestats @random_option='resample';
+go
+
+create login user1 with password = 'abc';
+go
+
+-- check execution from psql
+-- psql
+call sys.sp_updatestats();
+go
+
+-- tsql
+create database db1;
+go
+
+use db1;
+go
+
+create user user1 for login user1;
+go
+
+use master;
+go
+
+-- tsql user=user1 password=abc
+-- Case when user other than database owner executes, it should throw error
+use db1;
+go
+
+exec sys.sp_updatestats;
+go
+
+use master;
+go
+
+exec sys.sp_updatestats;
+go
+
+-- tsql
+drop database db1;
+go
+
+-- psql
+-- Need to terminate active session before cleaning up the login
+SELECT pg_terminate_backend(pid) FROM pg_stat_get_activity(NULL) 
+WHERE sys.suser_name(usesysid) = 'user1' AND backend_type = 'client backend' AND usesysid IS NOT NULL;
+GO
+-- Wait to sync with another session
+SELECT pg_sleep(1);
+GO
+
+-- tsql
+drop login user1;
+go

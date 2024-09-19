@@ -1,0 +1,220 @@
+# Schedule File for JDBC Test Framework for local run
+# 1. Lines starting with '#' will be treated as comments
+# 2. To run a postgres command:	cmd#!#postgresql#!#<enter postgres command>
+# 3. To run a T-SQL command: cmd#!#sqlserver#!#<enter T-SQL command>
+# 4. Keyword "all" is equivalent to running all test files in
+#    input folder
+# 5. To add a test, add test name (without extension Eg. BABEL-TEST) on a
+#    new line
+# 6. If you want the framework to not run certain files, use: ignore#!#<test name>
+
+all
+
+# BABEL-SP_FKEYS test is very slow and causing github action timeout.
+
+# JDBC bulk insert API seems to call SET FMTONLY ON without calling SET FMTONLY OFF, causing some spurious test failures.
+ignore#!#insertbulk
+ignore#!#BABEL-SQLvariant
+
+# TDS fault injection framework is meant for internal testing only. So, ignore tds_faultinjection tests in stable branch
+ignore#!#tds_faultinjection
+ignore#!#babel_tds_fault_injection
+
+# Ignore upgrade tests in normal JDBC run. These are tests that cannot be run in non-upgrade contexts due
+# to changing the behavior between pre- and post-commit.
+ignore#!#BABEL-2934-vu-prepare
+ignore#!#BABEL-2934-vu-verify
+ignore#!#BABEL-1444-vu-prepare
+ignore#!#BABEL-1444-vu-verify
+ignore#!#BABEL-1444-vu-cleanup
+ignore#!#Test-Default-Columns-vu-prepare
+ignore#!#Test-Default-Columns-vu-verify
+ignore#!#Test-Default-Columns-vu-cleanup
+ignore#!#Test-Prep-Statements-vu-prepare
+ignore#!#Test-Prep-Statements-vu-verify
+ignore#!#Test-Prep-Statements-vu-cleanup
+ignore#!#BABEL-3117-vu-prepare
+ignore#!#BABEL-3117-vu-verify
+ignore#!#BABEL-3655-vu-prepare
+ignore#!#BABEL-3655-vu-verify
+ignore#!#sys-types-before-dep-vu-prepare
+ignore#!#sys-types-before-dep-vu-verify
+ignore#!#sys-types-before-dep-vu-cleanup
+ignore#!#sys-table_types-before-dep-vu-prepare
+ignore#!#sys-table_types-before-dep-vu-verify
+ignore#!#sys-table_types-before-dep-vu-cleanup
+ignore#!#BABEL_4553-vu-prepare
+ignore#!#BABEL_4553-vu-verify
+
+# These tests are meant for upgrade scenario prior to (potential) 14_5 release
+ignore#!#BABEL-3147-before-14_5-vu-prepare
+ignore#!#BABEL-3147-before-14_5-vu-verify
+ignore#!#BABEL-3147-before-14_5-vu-cleanup
+ignore#!#BABEL-3347-before-14_6-vu-prepare
+ignore#!#BABEL-3347-before-14_6-vu-verify
+ignore#!#BABEL-3347-before-14_6-vu-cleanup
+ignore#!#TestErrorHelperFunctionsUpgrade-vu-prepare
+ignore#!#TestErrorHelperFunctionsUpgrade-vu-verify
+ignore#!#TestErrorHelperFunctionsUpgrade-vu-cleanup
+ignore#!#BABEL-3556-before-14_6-vu-prepare
+ignore#!#BABEL-3556-before-14_6-vu-verify
+ignore#!#BABEL-3010-before-14_6-vu-prepare
+ignore#!#BABEL-3010-before-14_6-vu-verify
+ignore#!#BABEL-3010-before-14_6-vu-cleanup
+ignore#!#BABEL-CHECK-CONSTRAINT-before-14_6-vu-prepare
+ignore#!#BABEL-CHECK-CONSTRAINT-before-14_6-vu-verify
+ignore#!#BABEL-CHECK-CONSTRAINT-before-14_6-vu-cleanup
+ignore#!#BABEL-3646-before-14_6-vu-prepare
+ignore#!#BABEL-3646-before-14_6-vu-verify
+ignore#!#BABEL-3748-before-14_7-vu-prepare
+ignore#!#BABEL-3748-before-14_7-vu-verify
+ignore#!#bbf_view_def-before-14_5-vu-prepare
+ignore#!#bbf_view_def-before-14_5-vu-verify
+ignore#!#bbf_view_def-before-14_7-or-15_2-vu-prepare
+ignore#!#bbf_view_def-before-14_7-or-15_2-vu-verify
+ignore#!#routines_definition_before-14_7-or-15_2-vu-prepare
+ignore#!#routines_definition_before-14_7-or-15_2-vu-verify
+ignore#!#sys-all_sql_modules_before-14_5-vu-prepare
+ignore#!#sys-all_sql_modules_before-14_5-vu-verify
+ignore#!#sys-all_sql_modules_before-14_5-vu-cleanup
+ignore#!#sys-all_sql_modules_before-14_7-or-15_2-vu-prepare
+ignore#!#sys-all_sql_modules_before-14_7-or-15_2-vu-verify
+ignore#!#sys-all_sql_modules_before-14_7-or-15_2-vu-cleanup
+ignore#!#sys-sql_modules_before-14_7-or-15_2-vu-prepare
+ignore#!#sys-sql_modules_before-14_7-or-15_2-vu-verify
+ignore#!#sys-sql_modules_before-14_7-or-15_2-vu-cleanup
+ignore#!#BABEL-3696-before-14_10-or-15_5-vu-prepare
+ignore#!#BABEL-3696-before-14_10-or-15_5-vu-verify
+ignore#!#BABEL-3696-before-14_10-or-15_5-vu-cleanup
+ignore#!#forjson-before-14_10-or-15_5-vu-prepare
+ignore#!#forjson-before-14_10-or-15_5-vu-verify
+ignore#!#forjson-before-14_10-or-15_5-vu-cleanup
+ignore#!#forjson-subquery-before-14_10-or-15_5-vu-prepare
+ignore#!#forjson-subquery-before-14_10-or-15_5-vu-verify
+ignore#!#forjson-subquery-before-14_10-or-15_5-vu-cleanup
+ignore#!#forjson-datatypes-before-14_10-or-15_5-vu-prepare
+ignore#!#forjson-datatypes-before-14_10-or-15_5-vu-verify
+ignore#!#forjson-datatypes-before-14_10-or-15_5-vu-cleanup
+ignore#!#sys-parsename-before-15_6-or-16_1-vu-prepare
+ignore#!#sys-parsename-before-15_6-or-16_1-vu-verify
+ignore#!#sys-parsename-before-15_6-or-16_1-vu-cleanup
+ignore#!#BABEL-4529-before-15_6-or-14_11-vu-prepare
+ignore#!#BABEL-4529-before-15_6-or-14_11-vu-verify
+ignore#!#BABEL-4529-before-15_6-or-14_11-vu-cleanup
+ignore#!#AUTO_ANALYZE-before-15-5-or-14-10-vu-prepare
+ignore#!#AUTO_ANALYZE-before-15-5-or-14-10-vu-verify
+ignore#!#orderby-before-15_3-vu-prepare
+ignore#!#orderby-before-15_3-vu-verify
+ignore#!#orderby-before-15_3-vu-cleanup
+ignore#!#babel_function_string-before-15-5-or-14-10-vu-prepare
+ignore#!#babel_function_string-before-15-5-or-14-10-vu-verify
+ignore#!#BABEL-3166-before-14_11-or-15_6-vu-prepare
+ignore#!#BABEL-3166-before-14_11-or-15_6-vu-verify
+ignore#!#BABEL-3010-before-15_6-vu-prepare
+ignore#!#BABEL-3010-before-15_6-vu-verify
+ignore#!#BABEL-3010-before-15_6-vu-cleanup
+ignore#!#BABEL-492-before-15_6-vu-prepare
+ignore#!#BABEL-492-before-15_6-vu-verify
+
+# These tests are meant for upgrade scenario where source version is 13_X
+ignore#!#sys_database_principals_dep_for_13_x-vu-cleanup
+ignore#!#sys_database_principals_dep_for_13_x-vu-prepare
+ignore#!#sys_database_principals_dep_for_13_x-vu-verify
+ignore#!#sys_server_principals_dep_for_13_x-vu-cleanup
+ignore#!#sys_server_principals_dep_for_13_x-vu-prepare
+ignore#!#sys_server_principals_dep_for_13_x-vu-verify
+ignore#!#sys-identity_columns-dep-for-13-x-vu-prepare
+ignore#!#sys-identity_columns-dep-for-13-x-vu-verify
+ignore#!#sys-identity_columns-dep-for-13-x-vu-cleanup
+ignore#!#sys-system_objects-for-13-x-vu-prepare
+ignore#!#sys-system_objects-for-13-x-vu-verify
+ignore#!#sys-system_objects-for-13-x-vu-cleanup
+
+# These tests are meant for upgrade scenario where source version 14_3
+ignore#!#sys-identity_columns-dep-for-14-3-vu-prepare
+ignore#!#sys-identity_columns-dep-for-14-3-vu-verify
+ignore#!#sys-identity_columns-dep-for-14-3-vu-cleanup
+ignore#!#case_insensitive_collation-before-13-5-vu-prepare
+ignore#!#case_insensitive_collation-before-13-5-vu-verify
+ignore#!#case_insensitive_collation-before-13-5-vu-cleanup
+
+#Ignore upgrade tests in normal JDBC run as they are to be run in multi-db mode, similar test files for JDBC testing are already present
+ignore#!#jira-BABEL-3504-upgrade-vu-prepare
+ignore#!#jira-BABEL-3504-upgrade-vu-verify
+ignore#!#jira-BABEL-3504-upgrade-vu-cleanup
+ignore#!#BABEL-2170-vu-prepare
+ignore#!#BABEL-2170-vu-verify
+ignore#!#BABEL-2170-vu-cleanup
+
+ignore#!#AVG-Aggregate-Dep-before-15-2-or-14-7-vu-prepare
+ignore#!#AVG-Aggregate-Dep-before-15-2-or-14-7-vu-verify
+# These tests are meant for upgrade scenario prior to (potential) 15_2 release
+ignore#!#test_windows_login_before_15_2-vu-prepare
+ignore#!#test_windows_login_before_15_2-vu-verify
+ignore#!#test_windows_login_before_15_2-vu-cleanup
+ignore#!#datediff_internal_date-before-14_7-or-15_2-vu-prepare
+ignore#!#datediff_internal_date-before-14_7-or-15_2-vu-verify
+ignore#!#datediff_internal_date-before-14_7-or-15_2-vu-cleanup
+ignore#!#datediff_internal_date-before-14_10-or-15_5-vu-prepare
+ignore#!#datediff_internal_date-before-14_10-or-15_5-vu-verify
+ignore#!#datediff_internal_date-before-14_10-or-15_5-vu-cleanup
+ignore#!#datetime2fromparts-vu-prepare
+ignore#!#datetime2fromparts-vu-verify
+ignore#!#datetime2fromparts-vu-cleanup
+ignore#!#babel_smalldatetime_before_15-5
+
+# These tests are meant for only upgrade
+ignore#!#openquery_upgrd-vu-prepare
+ignore#!#openquery_upgrd-vu-verify
+ignore#!#openquery_upgrd-vu-cleanup
+ignore#!#openquery_upgrd_before_15_4-vu-prepare
+ignore#!#openquery_upgrd_before_15_4-vu-verify
+ignore#!#openquery_upgrd_before_15_4-vu-cleanup
+ignore#!#Test-Identity-before-14_7-or-15_2-vu-prepare
+ignore#!#Test-Identity-before-14_7-or-15_2-vu-verify
+ignore#!#Test-Identity-before-14_7-or-15_2-vu-cleanup
+ignore#!#datetimeoffset-timezone-before-15_3-vu-prepare
+ignore#!#datetimeoffset-timezone-before-15_3-vu-verify
+ignore#!#datetimeoffset-timezone-before-15_3-vu-cleanup
+ignore#!#select-strip-parens-before-pr1812-vu-prepare
+ignore#!#select-strip-parens-before-pr1812-vu-verify
+ignore#!#select-strip-parens-before-pr1812-vu-cleanup
+ignore#!#select-strip-parens-before-15_5-vu-prepare
+ignore#!#select-strip-parens-before-15_5-vu-verify
+ignore#!#select-strip-parens-before-15_5-vu-cleanup
+ignore#!#permission_restrictions_from_pg-vu-prepare
+ignore#!#permission_restrictions_from_pg-vu-verify
+
+# These tests are meant for upgrade scenario prior to (potential) 14_8 or 15_3 release
+ignore#!#BABEL-4078-before-14_8-or-15_3-vu-prepare
+ignore#!#BABEL-4078-before-14_8-or-15_3-vu-verify
+ignore#!#BABEL-4078-before-14_8-or-15_3-vu-cleanup
+
+# These tests are meant for upgrade scenario prior to (potential) 15_5 release
+ignore#!#babel_index_nulls_order-before-15-5-vu-prepare
+ignore#!#babel_index_nulls_order-before-15-5-vu-verify
+ignore#!#babel_index_nulls_order-before-15-5-vu-cleanup
+
+# These tests are meant for upgrade scenario prior to (potential) 15_6 or 16_1 release
+ignore#!#BABEL-730-before-15_6-or-16_1-vu-prepare
+ignore#!#BABEL-730-before-15_6-or-16_1-vu-verify
+ignore#!#BABEL-730-before-15_6-or-16_1-vu-cleanup
+
+# These are bash scripts that should not be executed
+ignore#!#load_aggtest
+ignore#!#load_emp
+ignore#!#load_onek
+ignore#!#load_person
+ignore#!#load_road
+ignore#!#load_tenk
+ignore#!#load_stud_emp
+ignore#!#load_student
+ignore#!#temp_table_jdbc
+ignore#!#temp_tables_concurrent-vu-cleanup
+ignore#!#temp_tables_concurrent-vu-prepare
+ignore#!#temp_tables_concurrent-vu-verify
+
+# These tests are running in multidb mode in upgrade and singledb mode in JDBC
+ignore#!#BABEL-4279-vu-prepare
+ignore#!#BABEL-4279-vu-verify
+ignore#!#BABEL-4279-vu-cleanup

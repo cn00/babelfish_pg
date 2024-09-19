@@ -1,0 +1,50 @@
+Use constraint_column_usage_vu_prepare_db;
+go
+
+SELECT * FROM information_schema.CONSTRAINT_COLUMN_USAGE WHERE TABLE_NAME LIKE 'constraint_column_usage_vu_prepare%' ORDER BY COLUMN_NAME;
+go
+~~START~~
+nvarchar#!#nvarchar#!#nvarchar#!#nvarchar#!#nvarchar#!#nvarchar#!#nvarchar
+constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl1#!#arg1#!#constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl1_pkey
+constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl5#!#arg10#!#constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl5_arg10_arg11_fkey
+constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl5#!#arg11#!#constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl5_arg10_arg11_fkey
+constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl2#!#arg3#!#constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl2_pkey
+constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl2#!#arg4#!#constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl2_arg4_fkey
+constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl3#!#arg5#!#constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl3_pkey
+constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl3#!#arg6#!#constraint_column_usage_vu_prepare_db#!#dbo#!#constraint_column_usage_vu_prepare_tbl3_pkey
+constraint_column_usage_vu_prepare_db#!#constraint_column_usage_vu_prepare_sc1#!#constraint_column_usage_vu_prepare_tbl4#!#arg7#!#constraint_column_usage_vu_prepare_db#!#constraint_column_usage_vu_prepare_sc1#!#constraint_column_usage_vu_prepare_tbl4_check
+constraint_column_usage_vu_prepare_db#!#constraint_column_usage_vu_prepare_sc1#!#constraint_column_usage_vu_prepare_tbl4#!#arg8#!#constraint_column_usage_vu_prepare_db#!#constraint_column_usage_vu_prepare_sc1#!#constraint_column_usage_vu_prepare_tbl4_check
+~~END~~
+
+
+Use master;
+go
+
+SELECT * FROM information_schema.CONSTRAINT_COLUMN_USAGE WHERE TABLE_NAME LIKE 'constraint_column_usage_vu_prepare%' ORDER BY COLUMN_NAME;
+go
+~~START~~
+nvarchar#!#nvarchar#!#nvarchar#!#nvarchar#!#nvarchar#!#nvarchar#!#nvarchar
+~~END~~
+
+
+use constraint_column_usage_vu_prepare_db;
+go
+
+drop table constraint_column_usage_vu_prepare_tbl2;
+go
+drop table constraint_column_usage_vu_prepare_tbl1;
+go
+drop table constraint_column_usage_vu_prepare_tbl5;
+go
+drop table constraint_column_usage_vu_prepare_tbl3;
+go
+drop table constraint_column_usage_vu_prepare_sc1.constraint_column_usage_vu_prepare_tbl4;
+go
+drop schema constraint_column_usage_vu_prepare_sc1;
+go
+
+use master
+go
+
+drop database constraint_column_usage_vu_prepare_db;
+go

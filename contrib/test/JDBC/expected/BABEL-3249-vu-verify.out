@@ -1,0 +1,29 @@
+DELETE FROM babel_3249_vu_prepare_TAB WHERE C1 = 1;
+GO
+~~START~~
+int#!#varchar
+2#!#ghl
+3#!#xyz
+10#!#fjf
+~~END~~
+
+~~ROW COUNT: 1~~
+
+~~ROW COUNT: 1~~
+
+
+SELECT PRONAME FROM PG_PROC WHERE PRONAME = 'babel_3249_vu_prepare_trig_for'
+GO
+~~START~~
+varchar
+babel_3249_vu_prepare_trig_for
+~~END~~
+
+
+SELECT PRONAME FROM PG_PROC WHERE PRONAME = 'babel_3249_vu_prepare_trig_after'
+GO
+~~START~~
+varchar
+babel_3249_vu_prepare_trig_after
+~~END~~
+

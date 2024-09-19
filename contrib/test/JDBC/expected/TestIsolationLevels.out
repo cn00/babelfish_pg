@@ -1,0 +1,118 @@
+SELECT set_config('babelfishpg_tsql.isolation_level_repeatable_read','off',false);
+SELECT set_config('babelfishpg_tsql.isolation_level_serializable','off',false);
+GO
+~~START~~
+text
+off
+~~END~~
+
+~~START~~
+text
+off
+~~END~~
+
+
+set transaction isolation level read uncommitted;
+go
+
+set transaction isolation level read committed;
+go
+
+set transaction isolation level repeatable read;
+go
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: Isolation level 'REPEATABLE READ' is not currently supported in Babelfish. Set 'babelfishpg_tsql.isolation_level_repeatable_read' config option to 'pg_isolation' to get PG repeatable read isolation level.)~~
+
+
+set transaction isolation level snapshot;
+go
+
+set transaction isolation level serializable;
+go
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: Isolation level 'SERIALIZABLE' is not currently supported in Babelfish. Set 'babelfishpg_tsql.isolation_level_serializable' config option to 'pg_isolation' to get PG serializable isolation level.)~~
+
+
+select set_config('default_transaction_isolation', 'read uncommitted', false);
+go
+~~START~~
+text
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: set_config not allowed for option default_transaction_isolation)~~
+
+select set_config('default_transaction_isolation', 'read committed', false);
+go
+~~START~~
+text
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: set_config not allowed for option default_transaction_isolation)~~
+
+select set_config('default_transaction_isolation', 'repeatable read', false);
+go
+~~START~~
+text
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: set_config not allowed for option default_transaction_isolation)~~
+
+select set_config('default_transaction_isolation', 'snapshot', false);
+go
+~~START~~
+text
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: set_config not allowed for option default_transaction_isolation)~~
+
+select set_config('default_transaction_isolation', 'serializable', false);
+go
+~~START~~
+text
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: set_config not allowed for option default_transaction_isolation)~~
+
+
+select set_config('transaction_isolation', 'read uncommitted', false);
+go
+~~START~~
+text
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: set_config not allowed for option transaction_isolation)~~
+
+select set_config('transaction_isolation', 'read committed', false);
+go
+~~START~~
+text
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: set_config not allowed for option transaction_isolation)~~
+
+select set_config('transaction_isolation', 'repeatable read', false);
+go
+~~START~~
+text
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: set_config not allowed for option transaction_isolation)~~
+
+select set_config('transaction_isolation', 'snapshot', false);
+go
+~~START~~
+text
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: set_config not allowed for option transaction_isolation)~~
+
+select set_config('transaction_isolation', 'serializable', false);
+go
+~~START~~
+text
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: set_config not allowed for option transaction_isolation)~~
+

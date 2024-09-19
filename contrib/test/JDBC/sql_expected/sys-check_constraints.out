@@ -1,0 +1,34 @@
+DROP TABLE IF EXISTS sys_check_constraints
+GO
+
+CREATE TABLE sys_check_constraints (
+	sck_date_col DATETIME CHECK (sck_date_col IS NOT NULL)
+)
+GO
+
+SELECT name FROM sys.check_constraints WHERE NAME IN ('sys_check_constraints_sck_date_col_check') 
+GO
+~~START~~
+varchar
+sys_check_constraints_sck_date_col_check
+~~END~~
+
+
+SELECT COUNT(*) FROM sys.check_constraints WHERE NAME IN ('sys_check_constraints_sck_date_col_check') and type = 'C'
+GO
+~~START~~
+int
+1
+~~END~~
+
+
+SELECT COUNT(*) FROM sys.check_constraints WHERE NAME IN ('sys_check_constraints_sck_date_col_check') and type = 'c'
+GO
+~~START~~
+int
+1
+~~END~~
+
+
+DROP TABLE IF EXISTS sys_check_constraints
+GO

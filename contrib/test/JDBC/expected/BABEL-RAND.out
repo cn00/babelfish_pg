@@ -1,0 +1,89 @@
+USE master;
+GO
+
+SELECT rand(2147483647)
+GO
+~~START~~
+float
+0.7913666861434354
+~~END~~
+
+SELECT rand()
+GO
+~~START~~
+float
+0.7756526603705924
+~~END~~
+
+SELECT rand()
+GO
+~~START~~
+float
+0.7991890839131757
+~~END~~
+
+SELECT rand()
+GO
+~~START~~
+float
+0.3355217067543983
+~~END~~
+
+
+SELECT rand(0)
+GO
+~~START~~
+float
+0.8702553105818676
+~~END~~
+
+SELECT rand()
+GO
+~~START~~
+float
+0.426569726107606
+~~END~~
+
+SELECT rand()
+GO
+~~START~~
+float
+0.6684808914837377
+~~END~~
+
+SELECT rand()
+GO
+~~START~~
+float
+0.530027136563384
+~~END~~
+
+
+SELECT rand(-2147483648)
+GO
+~~START~~
+float
+0.09682566604521914
+~~END~~
+
+SELECT rand()
+GO
+~~START~~
+float
+0.9443710132613918
+~~END~~
+
+SELECT rand()
+GO
+~~START~~
+float
+0.9766501808644203
+~~END~~
+
+SELECT rand()
+GO
+~~START~~
+float
+0.00687380378124125
+~~END~~
+

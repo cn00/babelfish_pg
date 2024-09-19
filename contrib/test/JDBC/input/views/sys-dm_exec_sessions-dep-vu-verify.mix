@@ -1,0 +1,17 @@
+-- tsql
+-- reset the login password
+alter login sys_dm_exec_sessions_dep_vu_prepare_login with password = 'password'
+GO
+
+-- tsql user=sys_dm_exec_sessions_dep_vu_prepare_login password=password
+-- if we query the view not as sysadmin, we will only see info of this session only
+exec dbo.sys_dm_exec_sessions_dep_vu_prepare_p1
+GO
+
+-- tsql
+-- if we query the view as sysadmin, we will see info of all sessions
+select * from sys_dm_exec_sessions_dep_vu_prepare_f1()
+GO
+
+select * from sys_dm_exec_sessions_dep_vu_prepare_v1
+GO

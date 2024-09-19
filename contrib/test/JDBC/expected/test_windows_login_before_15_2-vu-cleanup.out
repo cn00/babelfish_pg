@@ -1,0 +1,47 @@
+DROP LOGIN PassWordUser;
+GO
+
+DROP LOGIN [ad\Aduser];
+GO
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: Cannot drop the login 'aduser@AD', because it does not exist or you do not have permission.)~~
+
+
+DROP LOGIN [ad\Aduserdb];
+GO
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: Cannot drop the login 'aduserdb@AD', because it does not exist or you do not have permission.)~~
+
+
+DROP LOGIN [ad\Aduserlanguage];
+GO
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: Cannot drop the login 'aduserlanguage@AD', because it does not exist or you do not have permission.)~~
+
+
+DROP LOGIN [ad\Aduserdblanguage];
+GO
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: Cannot drop the login 'aduserdblanguage@AD', because it does not exist or you do not have permission.)~~
+
+
+DROP LOGIN [ad\AduserdblanguageEnglish];
+GO
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: Cannot drop the login 'aduserdblanguageenglish@AD', because it does not exist or you do not have permission.)~~
+
+
+DROP LOGIN [ad\Aduseroption];
+GO
+~~ERROR (Code: 33557097)~~
+
+~~ERROR (Message: Cannot drop the login 'aduseroption@AD', because it does not exist or you do not have permission.)~~
+
+
+DROP DATABASE ad_db;
+GO

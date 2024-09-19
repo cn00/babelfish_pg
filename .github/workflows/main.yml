@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-run-tests:
+    name: Build and run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone-repository
+        uses: actions/checkout@v2
+      - name: install-dependencies
+        run: |
+          sudo apt update --fix-missing -y
+          sudo apt install -y libipc-run-perl
+      - name: build-postgres
+        run: |
+          ./configure --with-icu --enable-cassert --enable-tap-tests
+          make world-bin -j8 COPT='-Werror -Wno-error=maybe-uninitialized'
+      - name: run-tests
+        run: |
+          make check-world
+      - name: upload-test-summary
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: regression-summary
+          path: src/test/regress/regression.out
+      - name: upload-test-differences
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: regression-differences
+          path: src/test/regress/regression.diffs

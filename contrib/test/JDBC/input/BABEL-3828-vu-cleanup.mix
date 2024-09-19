@@ -1,0 +1,13 @@
+-- tsql
+DROP LOGIN [babel\aduser];
+GO
+
+-- tsql
+DROP LOGIN babeluser;
+GO
+
+-- tsql
+DROP LOGIN [babel\babeluser];
+GO
+
+
